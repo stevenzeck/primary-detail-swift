@@ -9,11 +9,10 @@ import SwiftUI
 
 @main
 struct primary_detail_swiftApp: App {
-    var network = Network()
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(network)
+                .environment(\.managedObjectContext, PostProvider.shared.container.viewContext)
         }
     }
 }
