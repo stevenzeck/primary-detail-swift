@@ -13,9 +13,9 @@ import CoreData
 class Post: NSManagedObject, Identifiable {
     
     /// id property, required for Identifiable, but also present in posts API
-    @NSManaged var id: Int
+    @NSManaged var id: Int64
     /// userId of the post
-    @NSManaged var userId: Int
+    @NSManaged var userId: Int64
     /// Title of the post
     @NSManaged var title: String
     /// Body of the post
@@ -26,8 +26,8 @@ class Post: NSManagedObject, Identifiable {
     ///
     func update(from postProperties: PostProperties) throws {
         let dictionary = postProperties.dictionaryValue
-        guard let newId = dictionary["id"] as? Int,
-              let newUserId = dictionary["userId"] as? Int,
+        guard let newId = dictionary["id"] as? Int64,
+              let newUserId = dictionary["userId"] as? Int64,
               let newTitle = dictionary["title"] as? String,
               let newBody = dictionary["body"] as? String,
               let newRead = dictionary["read"] as? Bool
@@ -57,7 +57,7 @@ extension Post {
         let viewContext = PostProvider.preview.container.viewContext
         for index in 0..<count {
             let post = Post(context: viewContext)
-            post.id = index
+            post.id = Int64(index)
             post.userId = 1
             post.title = "The title"
             post.body = "The body"

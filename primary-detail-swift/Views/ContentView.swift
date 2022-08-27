@@ -60,7 +60,10 @@ extension ContentView {
 }
 
 struct ContentView_Previews: PreviewProvider {
+    static let postProvider = PostProvider.preview
     static var previews: some View {
-        ContentView()
+        ContentView(postProvider: postProvider)
+            .environment(\.managedObjectContext,
+                          postProvider.container.viewContext)
     }
 }

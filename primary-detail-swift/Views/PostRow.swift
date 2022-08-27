@@ -22,12 +22,8 @@ struct PostRow: View {
     }
 }
 
-//struct PostRow_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Group {
-//            PostRow(post: posts[0])
-//            PostRow(post: posts[1])
-//        }
-//        .previewLayout(.fixed(width: 300, height: 70))
-//    }
-//}
+struct PostRow_Previews: PreviewProvider {
+    static var previews: some View {
+        PostRow(post: .preview)
+    }
+}
